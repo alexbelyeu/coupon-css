@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Coupon</title>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" type="text/css" href="vendor/bootstrap.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="vendor/jQuery.succinct.min.js"></script>
+
+    <meta name="description" content="Resizable and redeemable coupon with header, body and footer. Coupon will resize until text is too long, where it will be shortened thanks to Succint (by mikeking.io)">
+    <meta name="keywords" content="CSS, jQuery, Bootstrap, HTML, coupon, savingstar">
+    <meta name="author" content="Alex Belyeu">
+    
+    <link href="style.css" rel="stylesheet" type="text/css">
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="coupon">
+        <div class="coupon-header">
+          <button type="button" class="close" data-toggle="tooltip" data-placement="right" title="Discard offer">&times;</button>
+        	<h4 class="coupon-header-title">
+            <p class="truncateHeader">HEALTHY OFFER: Sweet potatoes</p></h4>
+        </div>
+        <div class="coupon-body">
+        	<div class="coupon-body-image">           
+        		<img src="sweetpotato.png">
+        	</div>
+        	<div class="coupon-body-text">
+        		<p class="truncateBody">Save 20% on any single purchase of loose Sweet Potatoes at participating retailers. See offer info for complete details. Check back every Tuesday for a new Healthy Offer.</p>
+        	</div>
+        </div>
+        <div class="coupon-footer">
+          <button type="button" id="btn" class="btn btn-block" data-toggle="tooltip" data-placement="bottom" title="Click to redeem/unredeem" onclick="redeemed();">Redeem</button>
+        </div>
+      </div>
+    </div>  
+    <script type="text/javascript">
+      $(function () {
+        $('.truncateBody').succinct({
+            size: 150
+        });
+        $('.truncateHeader').succinct({
+            size: 55
+        });
+        $('[data-toggle="tooltip"]').tooltip();
+      });
+      function redeemed(){
+        var text = document.getElementById("btn").innerHTML;
+        if (text === "Redeem"){
+          document.getElementById("btn").innerHTML = "Redeemed!";
+        } else {
+          document.getElementById("btn").innerHTML = "Redeem"
+        }
+      }
+    </script>
+  </body>
+</html>
